@@ -11,9 +11,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
-
+    @IBAction func btnGoToNext(_ sender: UIButton) {
+        let vcUsers = storyboard?.instantiateViewController(withIdentifier: "userID")
+        vcUsers!.modalPresentationStyle = .fullScreen
+        present(vcUsers!, animated: true) {
+            print("Completed")
+        }
+//        present(vcUsers!, animated: true, completion: nil)
+    }
+    
 }
 
