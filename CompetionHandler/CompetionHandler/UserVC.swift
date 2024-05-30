@@ -9,21 +9,42 @@ import UIKit
 
 class UserVC: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    var arrayUsers = [User]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tableView.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func btnGetDta(_ sender: UIButton) {
+        NetworkManager.shared.getUsers { users in
+            self.arrayUsers.append(contentsOf: users)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        }
     }
-    */
+    
+}
 
+extension UserVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return arrayUsers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let user = arrayUsers[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")!
+        cell.textLabel?.text = user.name
+        return cell
+    }
+    
+    
+}
+
+struct User: Codable {
+    let id: Int
+    let name: String
+    let email: String
 }

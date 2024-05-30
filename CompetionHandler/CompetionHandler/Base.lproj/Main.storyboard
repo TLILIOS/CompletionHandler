@@ -61,9 +61,12 @@
                                 </constraints>
                                 <color key="tintColor" red="0.70131624020000005" green="1" blue="0.080174393590000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <buttonConfiguration key="configuration" style="plain" title="Get Data">
                                     <fontDescription key="titleFontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="btnGetDta:" destination="Jco-1E-aNs" eventType="touchUpInside" id="z5h-Ct-zHi"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="w13-JJ-ikw">
                                 <rect key="frame" x="0.0" y="189" width="393" height="629"/>
@@ -92,6 +95,9 @@
                             <constraint firstItem="w13-JJ-ikw" firstAttribute="leading" secondItem="VrT-rW-KV3" secondAttribute="leading" id="rOo-6n-qmH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="w13-JJ-ikw" id="g4w-va-XmO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPG-48-WVp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
